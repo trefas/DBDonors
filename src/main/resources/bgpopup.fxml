@@ -2,10 +2,6 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<!--
-  ~ Copyright (c) 2023. trefas@yandex.ru
-  -->
-
 <fx:root prefHeight="79.0" prefWidth="291.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane hgap="5.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
