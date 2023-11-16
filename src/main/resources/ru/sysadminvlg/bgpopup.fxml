@@ -19,8 +19,8 @@
          <toggleGroup>
             <ToggleGroup fx:id="bg" />
          </toggleGroup></RadioButton>
-        <RadioButton text="B(III)" toggleGroup="$bg" GridPane.rowIndex="1" />
-        <RadioButton text="A(II)" toggleGroup="$bg" GridPane.columnIndex="1" />
+        <RadioButton text="A(II)" toggleGroup="$bg" GridPane.rowIndex="1" />
+        <RadioButton text="B(III)" toggleGroup="$bg" GridPane.columnIndex="1" />
         <RadioButton text="AB(IV)" toggleGroup="$bg" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <CheckBox fx:id="rh" text="Rh(Ag D)" GridPane.columnIndex="2" />
         <CheckBox fx:id="AgK" text="Ag Kell" GridPane.columnIndex="2" GridPane.rowIndex="1" />
