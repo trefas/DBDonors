@@ -1,6 +1,9 @@
 // * Copyright (c) 2023. trefas@yandex.ru
 
 package ru.sysadminvlg;
+
+import java.util.Objects;
+
 public class Bloodgroup {
     public int Code;
     public Phenotype Ph;
@@ -12,8 +15,9 @@ public class Bloodgroup {
     public Bloodgroup(String fullCode){
         String[] parts = fullCode.split(" ");
         Ph = new Phenotype();
-        Ph.setTextCode(parts[1]);
         String[] gr = parts[0].split("\\)");
+        if(parts.length > 1) Ph.setTextCode(parts[1]);
+         else Ph.setPartCode((gr.length > 1 && Objects.equals(gr[1], "Rh+"))? 1:0);
         switch (gr[0]){
             case "A(II": Code = 64; break;
             case "B(III": Code = 128; break;
@@ -25,11 +29,11 @@ public class Bloodgroup {
     public int getCode() { return Code; }
     public Phenotype getPh() { return Ph; }
     public int getGroup() { return Code>>6; }
-    public boolean getRh() { return Ph.antigens[5]; }
+    public boolean getRh() { return Code%2 == 1; }
     public String getGroupText(){
         String[] groups = { "0(I)","A(II)","B(III)","AB(IV)" };
         String txt = groups[getGroup()];
-        txt += (Ph.antigens[5])? "Rh+":"Rh-";
+        txt += (Code%2 == 1)? "Rh+":"Rh-";
         return txt;
     }
     public String getFullText(){ return getGroupText() + " " + Ph.getTextCode(); }

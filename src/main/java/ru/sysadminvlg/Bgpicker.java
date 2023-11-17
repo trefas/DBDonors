@@ -37,6 +37,10 @@ public class Bgpicker extends HBox {
         Code = 0;
     }
     private void btnClick() {
+        if(tf.getText().matches("^(0\\(I\\)|A\\(II\\)|B\\(III\\)|AB\\(IV\\))(Rh[+-])? ?" +
+                "(D[+-]C[+-]E[+-]c[+-]e[+-]K[+-])?$")){
+            Bloodgroup bg = new Bloodgroup(tf.getText());
+            Code = bg.getCode();}
         Stage popup = new Stage();
         Bgpopup root = new Bgpopup(getCode());
         AnchorPane popupRoot = new AnchorPane(root);
@@ -45,15 +49,18 @@ public class Bgpicker extends HBox {
         popup.setTitle("Группа крови и фенотип");
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.show();
+        root.getBtn().setOnAction(e -> {
+            Code = root.getCode();
+            tf.setText(root.getText());
+            popup.close();
+        });
     }
     private void txtEnter() {
-        if(tf.getText().matches("^(0\\(I\\)|A\\(II\\)|B\\(III\\)|AB\\(IV\\))(Rh[+-])? D[+-]C[+-]E[+-]c[+-]e[+-]K[+-]$")){
+        if(tf.getText().matches("^(0\\(I\\)|A\\(II\\)|B\\(III\\)|AB\\(IV\\))(Rh[+-])? ?" +
+                "(D[+-]C[+-]E[+-]c[+-]e[+-]K[+-])?$")){
             Bloodgroup bg = new Bloodgroup(tf.getText());
             Code = bg.getCode();
-            System.out.println(Code);
-            System.out.println(bg.getFullText());
         } else {
-            System.out.println("Не верная строка!");
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setTitle("Ошибка ручного добавления!");
             al.setHeaderText("Ошибка ручного ввода группы или фенотипа");

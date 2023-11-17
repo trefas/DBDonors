@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -30,7 +31,30 @@ public class Bgpopup extends AnchorPane {
     public Button getBtn() {
         return btn;
     }
-    private void loadForm() {
+    public int getCode() {
+        Code = (bg.getToggles().get(1).isSelected())? 128:0;
+        Code = (bg.getToggles().get(2).isSelected())? 64:0;
+        Code = (bg.getToggles().get(3).isSelected())? 192:0;
+        Code += (rh.isSelected())? 1:0;
+        Code += (AgK.isSelected())? 2:0;
+        Code += (Age.isSelected())? 4:0;
+        Code += (Agc.isSelected())? 8:0;
+        Code += (AgE.isSelected())? 16:0;
+        Code += (AgC.isSelected())? 32:0;
+        return Code;
+    }
+    public String getText() {
+        RadioButton rb = (RadioButton) bg.getSelectedToggle();
+        Text = rb.getText() + "Rh" + ((rh.isSelected())? "+":"-") + " ";
+        Text += (rh.isSelected())? "D+":"D-";
+        Text += (AgC.isSelected())? "C+":"C-";
+        Text += (AgE.isSelected())? "E+":"E-";
+        Text += (Agc.isSelected())? "c+":"c-";
+        Text += (Age.isSelected())? "e+":"e-";
+        Text += (AgK.isSelected())? "K+":"K-";
+        return Text;
+    }
+    public Bgpopup(int code){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bgpopup.fxml"));
         loader.setController(this);
         loader.setRoot(this);
@@ -40,32 +64,10 @@ public class Bgpopup extends AnchorPane {
             System.out.println("Не удалось загрузить форму bgpopup.fxml");
             throw new RuntimeException(e);
         }
-    }
-    public void setCode(int code) {
         Code = code;
         bgroup = new Bloodgroup(code);
         Text = bgroup.getFullText();
         setCheck();
-    }
-    public void setText(String text) {
-        Text = text;
-        bgroup = new Bloodgroup(text);
-        Code = bgroup.getCode();
-        setCheck();
-    }
-    public int getCode() {
-        return Code;
-    }
-    public String getText() {
-        return Text;
-    }
-    public Bgpopup(int code){
-        loadForm();
-        setCode(code);
-    }
-    public Bgpopup(String txt){
-        loadForm();
-        setText(txt);
     }
     private void setCheck() {
         rh.setSelected(bgroup.getRh());
