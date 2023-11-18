@@ -1,8 +1,8 @@
 .text-field {
-    -fx-background-radius: 5 0 0 5;
+    -fx-background-radius: 5;
 }
 .button {
-    -fx-background-radius:0 5 5 0;
+    -fx-background-color: #00000000;
 }
 .control:focused {
       -fx-highlight-fill: -fx-accent;
@@ -12,8 +12,8 @@
       -fx-border-color: -fx-faint-focus-color;
       -fx-border-insets: -1;
      }
-.control:focused > .button {
-      -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color, -fx-faint-focus-color, -fx-body-color;
-      -fx-background-insets: -0.2 -0.2 -0.2 1, 1 1 1 0, 1 1 1 1, 2, -1.4 -1.4 -1.4 1, 2.6;
-      -fx-background-radius: 0 3 3 0, 0 2 2 0, 0 1 1 0, 0 4 4 0, 0 1 1 0;
-     }
+.control:focused .button {
+      -fx-border-color: -fx-faint-focus-color;
+      -fx-border-insets: -1;
+      -fx-background-color: #cccccc33;
+}
