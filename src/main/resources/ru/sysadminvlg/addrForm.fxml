@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root spacing="5.0" type="VBox" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <AnchorPane>
+      <Label alignment="CENTER" text="Адрес" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Регион" />
+      <TextField fx:id="region" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Район" />
+      <TextField fx:id="district" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Город" />
+      <TextField fx:id="city" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Улица" />
+      <TextField fx:id="street" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Дом" />
+      <TextField fx:id="house" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Корпус" />
+      <TextField fx:id="corp" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Label layoutY="4.0" text="Квартира" />
+      <TextField fx:id="room" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane>
+      <Button fx:id="btn" text="Готово" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+</fx:root>
