@@ -67,9 +67,6 @@ public class Bgpopup extends AnchorPane {
         Code = code;
         bgroup = new Bloodgroup(code);
         Text = bgroup.getFullText();
-        setCheck();
-    }
-    private void setCheck() {
         rh.setSelected(bgroup.getRh());
         boolean[] antigens = bgroup.getPh().antigens;
         AgC.setSelected(antigens[0]);

@@ -16,8 +16,6 @@ import java.io.IOException;
 public class Bgpicker extends AnchorPane {
     @FXML
     private TextField tf;
-    @FXML
-    private Button btn;
     private int Code;
     public int getCode() {
         return Code;
@@ -32,10 +30,10 @@ public class Bgpicker extends AnchorPane {
             System.out.println("Не удалось загрузить кастомный элемент BGPicker");
             throw new RuntimeException(e);
         }
-        btn.onMouseClickedProperty().set(e -> btnClick());
+        tf.onMouseClickedProperty().set(e -> btnClick());
         tf.setOnAction(e -> txtEnter());
-        this.onKeyPressedProperty().set(e -> {
-            if(e.getCode() == KeyCode.ENTER || e.getCode() == KeyCode.SPACE) btnClick();
+        tf.onKeyPressedProperty().set(e -> {
+            if(e.getCode() == KeyCode.ENTER) btnClick();
         });
         Code = 0;
     }
@@ -59,17 +57,18 @@ public class Bgpicker extends AnchorPane {
         });
     }
     private void txtEnter() {
-        if(tf.getText().matches("^(0\\(I\\)|A\\(II\\)|B\\(III\\)|AB\\(IV\\))(Rh[+-])? ?" +
+        String s = tf.getText();
+        if(s.matches("^(0\\(I\\)|A\\(II\\)|B\\(III\\)|AB\\(IV\\))(Rh[+-])? ?" +
                 "(D[+-]C[+-]E[+-]c[+-]e[+-]K[+-])?$")){
             Bloodgroup bg = new Bloodgroup(tf.getText());
             Code = bg.getCode();
-        } else {
-            Alert al = new Alert(Alert.AlertType.ERROR);
+        } else { if (!s.isEmpty()) {
+            Alert al = new Alert(Alert.AlertType.WARNING);
             al.setTitle("Ошибка ручного добавления!");
-            al.setHeaderText("Ошибка ручного ввода группы или фенотипа");
+            al.setHeaderText("Ошибка ручного ввода группы или фенотипа.");
             al.setContentText("Для корректного введения воспользуйтесь формой ввода группы " +
                     "и фенотипа нажав кнопку рядом с полем ввода");
-            al.show();
+            al.show();}
         }
     }
 }

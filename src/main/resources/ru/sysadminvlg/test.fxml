@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import ru.sysadminvlg.Addrpicker?>
 <?import ru.sysadminvlg.Bgpicker?>
 
-<!--
-  ~ Copyright (c) 2023. trefas@yandex.ru
-  -->
-
-<AnchorPane prefHeight="138.0" prefWidth="231.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sysadminvlg.Test">
-    <Bgpicker focusTraversable="true" layoutX="18.0" layoutY="32.0" />
-   <Bgpicker layoutX="18.0" layoutY="75.0" prefHeight="26.0" prefWidth="195.0" />
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sysadminvlg.Test">
+    <Bgpicker focusTraversable="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+    <Addrpicker AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0" />
 </AnchorPane>
