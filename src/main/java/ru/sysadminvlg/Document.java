@@ -19,6 +19,6 @@ public class Document {
     }
     @Override
     public String toString() {
-        return name + ": " + serial +" " + number + ", выдан: " + issued + " " + released.toLocaleString();
+        return name + ": " + serial +" " + number + ", выдан: " + issued + " " + released.toString();
     }
 }
