@@ -1,16 +1,16 @@
 // * Copyright (c) 2023. trefas@yandex.ru
 package ru.sysadminvlg;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Document {
     public TypeDoc name;
     public String serial;
     public Integer number;
     public String issued;
-    public Date released;
+    public LocalDate released;
 
-    public Document(TypeDoc name, String serial, Integer number, String issued, Date released) {
+    public Document(TypeDoc name, String serial, Integer number, String issued, LocalDate released) {
         this.name = name;
         this.serial = serial;
         this.number = number;
