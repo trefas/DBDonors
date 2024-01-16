@@ -3,8 +3,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import ru.sysadminvlg.Addrpicker?>
 <?import ru.sysadminvlg.Bgpicker?>
+<?import ru.sysadminvlg.Docpicker?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sysadminvlg.Test">
     <Bgpicker focusTraversable="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-    <Addrpicker AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0" />
+    <Addrpicker AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0" />
+    <Docpicker layoutX="5.0" layoutY="62.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
 </AnchorPane>

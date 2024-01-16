@@ -5,11 +5,12 @@
 package ru.sysadminvlg;
 
 public enum TypeDoc {
-    PAS("паспорт"), MIL("военный билет");
+    PAS("Паспорт РФ"), MIL("Военный билет");
     String name;
     TypeDoc(String name) {
         this.name = name;
     }
+
     @Override
     public String toString() {
         return name;
