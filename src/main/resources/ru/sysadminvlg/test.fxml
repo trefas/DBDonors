@@ -14,7 +14,6 @@
 <?import ru.sysadminvlg.Bgpicker?>
 <?import ru.sysadminvlg.Docpicker?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox layoutX="5.0" layoutY="5.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
@@ -31,7 +30,7 @@
                   </Label>
                   <HBox prefWidth="200.0">
                      <children>
-                        <TextField promptText="Фамилия">
+                        <TextField promptText="Фамилия" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -54,7 +53,7 @@
                               <Insets left="10.0" right="5.0" />
                            </padding>
                         </Label>
-                        <DatePicker promptText="Не указана" />
+                        <DatePicker promptText="Не указана" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="BASELINE_LEFT">
@@ -67,7 +66,7 @@
                               <Insets left="10.0" right="5.0" />
                            </padding>
                         </Label>
-                        <TextField promptText="Не указан" />
+                        <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Не указан" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="BASELINE_LEFT">
@@ -80,7 +79,7 @@
                               <Insets left="10.0" right="5.0" />
                            </padding>
                         </Label>
-                        <Addrpicker />
+                        <Addrpicker HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="BASELINE_LEFT">
@@ -93,7 +92,7 @@
                               <Insets left="10.0" right="5.0" />
                            </padding>
                         </Label>
-                        <Docpicker />
+                        <Docpicker HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="BASELINE_LEFT">
@@ -106,7 +105,20 @@
                               <Insets left="10.0" right="5.0" />
                            </padding>
                         </Label>
-                        <Bgpicker />
+                        <Bgpicker HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BASELINE_LEFT">
+                     <children>
+                        <Label text="Место работы">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="5.0" />
+                           </padding>
+                        </Label>
+                        <TextField HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <Label layoutX="150.0" layoutY="10.0" text="Кроводачи">
@@ -117,7 +129,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TableView>
+                  <TableView VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn prefWidth="-1.0" text="C1" />
                       <TableColumn prefWidth="-1.0" text="C2" />
@@ -128,7 +140,7 @@
                   </TableView>
                </children>
             </VBox>
-            <TableView focusTraversable="false">
+            <TableView focusTraversable="false" HBox.hgrow="ALWAYS">
               <columns>
                 <TableColumn prefWidth="-1.0" text="C1" />
                 <TableColumn prefWidth="-1.0" text="C2" />
