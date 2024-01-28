@@ -1,6 +1,7 @@
 // * Copyright (c) 2023. trefas@yandex.ru
 package ru.sysadminvlg;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Document {
@@ -17,6 +18,8 @@ public class Document {
         this.issued = issued;
         this.released = released;
     }
+
+
     @Override
     public String toString() {
         return name + ": " + serial +" " + number + ", выдан: " + issued + " " + released;

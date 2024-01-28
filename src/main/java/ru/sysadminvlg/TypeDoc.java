@@ -15,4 +15,12 @@ public enum TypeDoc {
     public String toString() {
         return name;
     }
+    public static TypeDoc fromString(String text) {
+        for (TypeDoc b : TypeDoc.values()) {
+            if (b.name.equalsIgnoreCase(text)) {
+                return b;
+            }
+        }
+        return null;
+    }
 }
