@@ -22,6 +22,12 @@ public class Document {
 
     @Override
     public String toString() {
-        return name + ": " + serial +" " + number + ", выдан: " + issued + " " + released;
+        String text;
+        text = (name==null)? "":name + ": ";
+        text += (serial=="")? "":serial +" ";
+        text += (number==0)? "":number + ", выдан: ";
+        text += (issued=="")? "":issued + " ";
+        text += (released==null)? "":released;
+        return text;
     }
 }

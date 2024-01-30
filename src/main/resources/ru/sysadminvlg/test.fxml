@@ -109,9 +109,9 @@
          <ButtonBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: white;">
             <buttons>
                <Button fx:id="btn_clear" layoutX="308.0" layoutY="18.0" mnemonicParsing="false" onAction="#onDonorClear" text="Очистить" />
-               <Button fx:id="btn_add" mnemonicParsing="false" text="Добавить" />
-               <Button fx:id="btn_edit" mnemonicParsing="false" text="Изменить" />
-               <Button fx:id="btn_search" layoutX="313.0" layoutY="18.0" mnemonicParsing="false" text="Поиск" />
+               <Button fx:id="btn_add" disable="true" mnemonicParsing="false" text="Добавить" />
+               <Button fx:id="btn_edit" disable="true" mnemonicParsing="false" text="Изменить" />
+               <Button fx:id="btn_search" layoutX="313.0" layoutY="18.0" mnemonicParsing="false" onAction="#onSearchBtnClick" text="Поиск" />
             </buttons>
             <padding>
                <Insets right="5.0" />
@@ -136,6 +136,7 @@
             <columns>
                <TableColumn fx:id="col_date" prefWidth="-1.0" text="Дата кроводачи" />
                <TableColumn fx:id="col_med" prefWidth="-1.0" text="Медотвод" />
+               <TableColumn fx:id="col_mark" prefWidth="-1.0" text="Маркировка" />
             </columns>
             <columnResizePolicy>
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

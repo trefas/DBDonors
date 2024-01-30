@@ -61,13 +61,12 @@ public class Address {
     }
     public String getFullTxt() {
         String s = "";
-        String c = String.valueOf(corp);
         s += (region.isEmpty())? "":region + ", ";
         s += (district.isEmpty())? "":district + ", ";
         s += (city.isEmpty())? "":city + ", ";
         s += (street.isEmpty())? "":street + ", ";
         s += (house.isEmpty())? "":house + ", ";
-        s += (corp==0)? "": c + ", ";
+        s += (corp==0)? "":String.valueOf(corp) + ", ";
         s += (room==0)? "":String.valueOf(room);
         return s;
     }

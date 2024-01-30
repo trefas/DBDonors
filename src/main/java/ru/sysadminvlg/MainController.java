@@ -1,6 +1,7 @@
 // * Copyright (c) 2024. trefas@yandex.ru
 package ru.sysadminvlg;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -35,6 +38,8 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn col_date;
     @FXML
+    private TableColumn col_mark;
+    @FXML
     private TableColumn col_fio;
     @FXML
     private TableColumn col_med;
@@ -56,6 +61,9 @@ public class MainController implements Initializable {
     private TableView blood;
     @FXML
     private TableView donors;
+    private Donor selDonor;
+    private ObservableList list;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         col_fio.setCellValueFactory(new PropertyValueFactory<Donor, String>("FullName"));
@@ -67,7 +75,7 @@ public class MainController implements Initializable {
     }
 
     public void onDonorSelect(MouseEvent mouseEvent) {
-        Donor selDonor = (Donor) donors.getSelectionModel().getSelectedItem();
+        selDonor = (Donor) donors.getSelectionModel().getSelectedItem();
         tf_surname.setText(selDonor.getSurname());
         tf_name.setText(selDonor.getName());
         tf_patronim.setText(selDonor.getPatronim());
@@ -80,6 +88,33 @@ public class MainController implements Initializable {
         ce_bgroupe.setCode(selDonor.getBgroup().getCode());
         ce_bgroupe.getTf().setText(selDonor.getBloodGroupe());
         tf_work.setText(selDonor.getWork());
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/dbdonors","trefas","fy2lht1q");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM dbdonors.bloodletting left join dbdonors.prohibitions on dbdonors.bloodletting.id = dbdonors.prohibitions.blid where dbdonors.bloodletting.donor = "+selDonor.getId());
+            list = FXCollections.observableArrayList(dbArrayList(rs));
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        col_date.setCellValueFactory(new PropertyValueFactory<BloodLetting, String>("date"));
+        col_med.setCellValueFactory(new PropertyValueFactory<BloodLetting, String>("reason"));
+        col_mark.setCellValueFactory(new PropertyValueFactory<BloodLetting, String>("mark"));
+        FilteredList<BloodLetting> fbllist = new FilteredList<>(FXCollections.observableArrayList(list));
+        blood.setItems(fbllist);
+        btn_edit.setDisable(false);
+    }
+
+    private ArrayList dbArrayList(ResultSet rs) throws SQLException{
+        ArrayList<BloodLetting> data = new ArrayList<>();
+        while (rs.next()){
+            BloodLetting bl = new BloodLetting(rs.getInt(1),
+                    rs.getDate("date").toLocalDate(),
+                    rs.getString("mark"),
+                    rs.getString("reason"));
+            data.add(bl);
+        }
+        return data;
     }
 
     public void onDonorClear(ActionEvent actionEvent) {
@@ -96,5 +131,14 @@ public class MainController implements Initializable {
         ce_bgroupe.getTf().setText("");
         ce_bgroupe.setCode(0);
         tf_work.setText("");
+        btn_add.setDisable(true);
+        btn_edit.setDisable(true);
+        list.clear();
+        blood.setItems(list);
+    }
+    public void onSearchBtnClick(ActionEvent actionEvent) {
+        String ssurname = tf_surname.getText();
+        String sbgroupe = new Bloodgroup(ce_bgroupe.getCode()).getGroupText();
+        System.out.println(ssurname+" "+sbgroupe);
     }
 }
