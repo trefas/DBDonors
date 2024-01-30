@@ -15,7 +15,7 @@
             <RowConstraints />
             <RowConstraints />
         </rowConstraints>
-        <RadioButton text="0(I)">
+        <RadioButton text="0(I)" toggleGroup="$bg">
          <toggleGroup>
             <ToggleGroup fx:id="bg" />
          </toggleGroup></RadioButton>

@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Test extends Application {
@@ -56,7 +55,7 @@ public class Test extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("test.fxml"));
         Scene scene = new Scene(mainLoader.load());
-        stage.setTitle("Test");
+        stage.setTitle("База данных доноров");
         stage.setScene(scene);
         stage.show();
     }

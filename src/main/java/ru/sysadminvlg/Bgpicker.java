@@ -13,12 +13,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Bgpicker extends AnchorPane {
+    @FXML
+    private TextField tf;
+
     public TextField getTf() {
         return tf;
     }
-
-    @FXML
-    private TextField tf;
 
     public void setCode(int code) {
         Code = code;

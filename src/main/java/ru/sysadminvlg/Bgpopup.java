@@ -32,9 +32,9 @@ public class Bgpopup extends AnchorPane {
         return btn;
     }
     public int getCode() {
-        Code = (bg.getToggles().get(1).isSelected())? 128:0;
-        Code = (bg.getToggles().get(2).isSelected())? 64:0;
-        Code = (bg.getToggles().get(3).isSelected())? 192:0;
+        Code = (bg.getToggles().get(2).isSelected())? 128:0;
+        Code += (bg.getToggles().get(1).isSelected())? 64:0;
+        Code += (bg.getToggles().get(3).isSelected())? 192:0;
         Code += (rh.isSelected())? 1:0;
         Code += (AgK.isSelected())? 2:0;
         Code += (Age.isSelected())? 4:0;

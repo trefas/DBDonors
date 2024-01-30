@@ -9,11 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -72,8 +72,17 @@ public class MainController implements Initializable {
         col_bgroupe.setCellValueFactory(new PropertyValueFactory<Donor, String>("BloodGroupe"));
         FilteredList<Donor> fdata = new FilteredList<>(FXCollections.observableArrayList(Test.list));
         donors.setItems(fdata);
+        tf_surname.textProperty().addListener((observable, oldValue, newValue) ->
+                donors.setItems(filterList(Test.list, newValue.toLowerCase())));
     }
 
+    private ObservableList<Donor> filterList(List<Donor> list, String lowerCase) {
+        List<Donor> fList = new ArrayList<>();
+        for (Donor order:list){
+            if(order.getSurname().toLowerCase().contains(lowerCase)) fList.add(order);
+        }
+        return FXCollections.observableList(fList);
+    }
     public void onDonorSelect(MouseEvent mouseEvent) {
         selDonor = (Donor) donors.getSelectionModel().getSelectedItem();
         tf_surname.setText(selDonor.getSurname());
@@ -135,10 +144,17 @@ public class MainController implements Initializable {
         btn_edit.setDisable(true);
         list.clear();
         blood.setItems(list);
+        donors.setItems(Test.list);
     }
     public void onSearchBtnClick(ActionEvent actionEvent) {
-        String ssurname = tf_surname.getText();
         String sbgroupe = new Bloodgroup(ce_bgroupe.getCode()).getGroupText();
-        System.out.println(ssurname+" "+sbgroupe);
+        donors.setItems(filterGroupe(Test.list, sbgroupe));
+    }
+    private ObservableList<Donor> filterGroupe(List<Donor> list, String searched) {
+        List<Donor> fList = new ArrayList<>();
+        for (Donor order:list){
+            if(order.getBgroup().getGroupText().contains(searched)) fList.add(order);
+        }
+        return FXCollections.observableList(fList);
     }
 }
